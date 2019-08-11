@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello world!</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            //base ajax function
+            const ajax = (uri, method, data) => {
+                var request = {
+                    url: uri,
+                    type: method,
+                    contentType: "application/json",
+                    accepts: "application/json",
+                    cache: false,
+                    dataType: 'json',
+                    data: JSON.stringify(data),
+                    error: function(xhr) {
+                        var json = JSON.parse(xhr.responseText);
+                        alert("Error: " + xhr.status + ", " + json.response);
+                    }
+                };
+                return $.ajax(request);
+            }
+
+            const getRouteInfo = () => {
+                var url = "http://localhost:8080/hello";
+                ajax(url, 'GET').done(function(data) {
+                    document.getElementById("output").innerHTML = data.response;
+                });
+            }
+
+            getRouteInfo();
+        </script>
+    </head>
+    <body>
+        <div id="output"></div>
+    </body>
+</html>
