@@ -1,8 +1,3 @@
-// Tim Tran
-//     CS275
-// Final Project
-
-
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
@@ -20,7 +15,7 @@ app.listen(8080,function(){
 });
 
 var con = mysql.createConnection({
-    host:  "localhost",
+    host:  "hilcdaycare.com",
     user:  "root",
     password: pw,
     database: "school"
