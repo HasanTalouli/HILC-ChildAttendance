@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var mysql = require("mysql");
 var fs = require("fs");
+var builder = require("xmlbuilder");
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -25,6 +26,17 @@ con.connect(function(err)  {
     }
 });
 
+app.get('/getChildren', function(req,res){
+    con.query(`SELECT name, individualID from children`, function(err, rows, field){
+        if (err){
+            console.log(err);
+            console.log("Error querying from the database");
+        }else{
+            res.send(rows);
+            res.end();
+        }
+    })
+})
 
 app.post('/attendance', function(req,res){
     con.query(`INSERT INTO attendance (individualID, dateOfCare, timeIn, timeOut, attendance, dayOrNight)
@@ -53,6 +65,6 @@ app.post('/insertChild', function(req,res){
 })
 
 app.get('/getXML', function(req, res){
-    
+    //builder.create('ATT')
 })
 
