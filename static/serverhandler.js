@@ -31,12 +31,29 @@ const getInfo = (callback) => {
 
     var error;
 
-    for (var value in body) {
-        if (!body[value]) {
+    // make sure values are inputted properly
+    if (body.attendance == "A") {
+        if (!body.individualID) {
             if (!error) {
                 error = [];
             }
-            error.push(value);
+            error.push("individualID");
+        }
+        if (!body.dateOfCare) {
+            if (!error) {
+                error = [];
+            }
+            error.push("dateOfCare");
+        }
+    }
+    else {
+        for (var value in body) {
+            if (!body[value]) {
+                if (!error) {
+                    error = [];
+                }
+                error.push(value);
+            }
         }
     }
 
