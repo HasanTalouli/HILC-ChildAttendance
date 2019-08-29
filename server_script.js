@@ -41,7 +41,8 @@ app.get('/getChildren', function(req,res){
 app.post('/attendance', function(req,res){
     con.query(`INSERT INTO attendance (individualID, dateOfCare, timeIn, timeOut, attendance, dayOrNight)
     VALUES
-    (${con.escape(req.body.id)}, ${con.escape(req.body.dateOfCare)}, ${con.escape(req.body.timeIn)}, ${con.escape(req.body.DoB)}, ${con.escape(req.body.major)})`, function(err,rows, field){
+    (${con.escape(req.body.individualID)}, ${con.escape(req.body.dateOfCare)}, ${con.escape(req.body.timeIn)}, ${con.escape(req.body.timeOut)}
+    , ${con.escape(req.body.attendance)}, ${con.escape(req.body.dayOrNight)})`, function(err,rows, field){
         if (err){
             console.log(err);
             console.log("error inserting into database");

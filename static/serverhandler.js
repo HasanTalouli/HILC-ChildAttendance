@@ -1,4 +1,6 @@
 //base ajax function
+
+
 const ajax = (uri, method, data) => {
     var request = {
         url: uri,
@@ -9,8 +11,9 @@ const ajax = (uri, method, data) => {
         dataType: 'json',
         data: JSON.stringify(data),
         error: function(xhr) {
-            var json = JSON.parse(xhr.responseText);
-            alert("Error: " + xhr.status + ", " + json.error);
+            alert(xhr);
+            //var json = JSON.parse(xhr.responseText);
+            alert("Error");
         }
     };
     return $.ajax(request);
@@ -18,12 +21,12 @@ const ajax = (uri, method, data) => {
 
 const getInfo = (callback) => {
     var body = {
-        childId: document.getElementById("childSelect").value,
-        date: document.getElementById("date").value,
+        individualID: document.getElementById("childSelect").value,
+        dateOfCare: document.getElementById("date").value,
         timeIn: document.getElementById("timeIn").value,
         timeOut: document.getElementById("timeOut").value,
         attendance: document.getElementById("attendance").value,
-        dayNight: document.getElementById("dayNight").value
+        dayOrNight: document.getElementById("dayNight").value
     };
 
     var error;
@@ -57,7 +60,7 @@ const getStudents = () => {
 }
 
 const sendAttendance = () => {
-    var url = "";
+    var url = "/attendance";
     
     getInfo(function(err, body) {
         if (err) {
@@ -69,9 +72,10 @@ const sendAttendance = () => {
         }
         else {
             alert("success");
-            /*ajax(url, 'POST', body).done(function(data) {
+            ajax(url, 'POST', body).done(function(data) {
+                console.log(data);
                 alert("success");
-            });*/
+            });
         }
     });
 }
