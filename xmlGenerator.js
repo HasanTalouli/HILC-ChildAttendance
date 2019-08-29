@@ -1,6 +1,7 @@
 // This is the code that generates the xml files
 
 var fs = require('fs');
+var builder = require('xmlbuilder');
 
 var mysql = require('mysql');
 var con = mysql.createConnection({
@@ -20,8 +21,34 @@ con.connect(function(err) {
 	}
 });
 
+var jsonXml = {
+	ATTNDCUPLD: {
+		'@xmlns:xsi': '"http://www.w3.org/2001/XMLSchema-instance"',
+		PROVIDER: {
+			'@ID': '311214083 SLID="4"',
+			CHILDATTNDC: {
+				CASEID: {'#text': '123456789'},
+				INDIVIDUALID: {'#text': '987654321'},
+				ATTDATES: {
+					'#text': 'more stuff...'
+				}
+			}
+		}
+	}
+};
 
-fs.writeFile('newFile.xml', 'This is an XML File!!', function(err) {
+var xml = builder.create(jsonXml).end({ pretty: true});
+
+// The final xml file
+// var xml = builder.create('ATTNDCUPLD', {'xmlns:xsi': '"http://www.w3.org/2001/XMLSchema-instance"'})
+// 	.ele('CHILDATTNDC')
+// 		.ele('CASEID', '123456789')
+// 		.ele('INDIVIDUALID', '987654321')
+// 			.ele('ATTDATES')
+// 	.end({pretty: true});
+// var xml = builder.create('ATTNDCUPLD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance').end({pretty: true});
+
+fs.writeFile('newFile.xml', xml, function(err) {
 	if (err) {throw err;}
 	console.log('File successfuly created!');
 })

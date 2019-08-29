@@ -1,1 +1,10 @@
-This is an XML File!!
+<?xml version="1.0"?>
+<ATTNDCUPLD xmlns:xsi="&quot;http://www.w3.org/2001/XMLSchema-instance&quot;">
+  <PROVIDER ID="311214083 SLID=&quot;4&quot;">
+    <CHILDATTNDC>
+      <CASEID>123456789</CASEID>
+      <INDIVIDUALID>987654321</INDIVIDUALID>
+      <ATTDATES>more stuff...</ATTDATES>
+    </CHILDATTNDC>
+  </PROVIDER>
+</ATTNDCUPLD>
