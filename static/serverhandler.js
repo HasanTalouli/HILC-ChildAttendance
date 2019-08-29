@@ -41,13 +41,14 @@ const getInfo = (callback) => {
 }
 
 const getStudents = () => {
-    var url = "";
+    var url = "./getChildren";
 
     ajax(url, 'GET').done(function(data) {
+        console.log(data);
         var selectHTML = "";
 
         for (var student of data) {
-            selectHTML += "<option value=\"" + student.studentId + "\">" + student.name + "</option>";
+            selectHTML += "<option value=\"" + student.individualID + "\">" + student.name + "</option>";
         }
 
         var output = document.getElementById("childSelect");
