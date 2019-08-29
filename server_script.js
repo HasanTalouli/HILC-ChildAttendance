@@ -14,7 +14,7 @@ app.listen(8080,function(){
     console.log("Server Started");
 });
 
-var config = fs.readFileSync('../config.json');
+var config = fs.readFileSync('./config.json');
 var con = mysql.createConnection(JSON.parse(config));
 
 con.connect(function(err)  {
