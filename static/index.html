@@ -24,9 +24,64 @@
         </ul>
     </nav>
 <body>
-	<div id="main" class="container">
+    <div id="header" class="container">
         <h1>HILC Attendance</h1>
+        <h4>Select a child:</h4>
+        <select id="childSelect" onclick="resetForm()"></select>
+    </div>
+	<div id="main form" class="container">
+        <h4>Attendance form:</h4>
+        <div class="row">
+            <div class="col-3">
+                <p>Date</p>
+            </div>
+            <div class="col">
+                <input id="date" type="date" /> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <p>Time In</p>
+            </div>
+            <div class="col">
+                <input id="timeIn" type="time" /> 
+            </div>
+        </div>   
+        <div class="row">
+            <div class="col-3">
+                <p>Time Out</p>
+            </div>
+            <div class="col">
+                <input id="timeOut" type="time" /> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <p>Attendance</p>
+            </div>
+            <div class="col">
+                <select id="attendance">
+                    <option value="" style="display: none">- select -</option>
+                    <option value="full">Full Time</option>
+                    <option value="part">Part Time</option>
+                    <option value="absent">Absent</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <p>Day or Night</p>
+            </div>
+            <div class="col">
+                <select id="dayNight">
+                    <option value="" style="display: none">- select -</option>
+                    <option value="day">Day</option>
+                    <option value="night">Night</option>
+                </select>
+            </div>
+        </div>
 
+        <button onclick="sendAttendance()">Submit</button>
 	</div>
 </body>
 </html>
