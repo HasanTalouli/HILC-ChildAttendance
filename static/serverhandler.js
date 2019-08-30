@@ -1,6 +1,58 @@
+// Downloading XML file
+$("#loadXmlButton").click(function () {
+    console.log("thing: " + $("#monthSelecter").val());
+    var month = $("#monthSelecter").val();
+    var year = $("#yearSelecter").val();
+    
+    if (month === "" || year === "") {
+        console.log("Value of selected year: " + year);
+        console.log("Value of selected month: " + month);
+        $("#downloadResult").html("Please select a year and a month!");
+        return;
+    }
+
+    var date = new Date(year, month, 1);
+    $.ajax({
+        type: "GET",
+        url : "/getXML",
+        data: {selectedDate: date},
+        // dataType : "file",
+
+        success : function(msg){
+            // Changes HTML to have the result
+            $("#downloadResult").html("Thank you, your download will now start: " + msg);
+            console.log(msg);
+        },
+
+        // This error will only ever be reached if the user somehow disconnects
+        error: function(jgXHR, textStatus,errorThrown){
+            alert("Something weird just went wrong, please try refreshing the page\n(connection lost with server)");
+            $("#downloadResult").html("Something weird just went wrong, please try refreshing the page\n(connection lost with server)");
+        }
+    });
+});
+
+function loadYears() {
+    console.log("LOADING YEARS");
+    var selectMenu = $("#yearSelecter");
+    var currentYear = new Date().getFullYear();
+
+    for (var i = currentYear; i >= currentYear - 10; i--) {
+        var option = document.createElement("option");
+        option.value = i;
+        option.text = i;
+
+        // if (i === currentYear) {
+        //     // option.selected = 'selected';
+        //     option.setAttribute('selected', 'selected');
+        //     console.log("Selected: " + i);
+        //     selectMenu.selected = i;
+        // }
+        selectMenu.append(option);
+    }
+}
+
 //base ajax function
-
-
 const ajax = (uri, method, data) => {
     var request = {
         url: uri,
