@@ -11,9 +11,10 @@ const ajax = (uri, method, data) => {
         dataType: 'json',
         data: JSON.stringify(data),
         error: function(xhr) {
-            alert(xhr);
+            // alert(xhr);
+            console.log(xhr);
             //var json = JSON.parse(xhr.responseText);
-            alert("Error");
+            alert("Error: " + xhr);
         }
     };
     return $.ajax(request);
@@ -68,13 +69,15 @@ const sendAttendance = () => {
             for (var value of err) {
                 error += value + ", ";
             }
-            alert(error);
+            // alert(error);
+            $("#insertStatus").html("Error: " + error);
         }
         else {
-            alert("success");
+            // alert("success");
             ajax(url, 'POST', body).done(function(data) {
                 console.log(data);
-                alert("success");
+                // alert("success");
+                $("#insertStatus").html(data.Status);
             });
         }
     });

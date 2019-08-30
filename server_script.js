@@ -15,18 +15,20 @@ app.listen(8080,function(){
 });
 
 var config = fs.readFileSync('./config.json');
-var con = mysql.createConnection(JSON.parse(config));
+// var con = mysql.createConnection(JSON.parse(config));
+var con = mysql.createPool(JSON.parse(config));
 
-con.connect(function(err)  {
-    if (err)  {
-        console.log(err);
-        console.log("Error connecting to database"); 
-    }else  {
-        console.log("Database successfully connected"); 
-    }
-});
+// con.connect(function(err)  {
+//     if (err)  {
+//         console.log(err);
+//         console.log("Error connecting to database"); 
+//     }else  {
+//         console.log("Database successfully connected"); 
+//     }
+// });
 
 app.get('/getChildren', function(req,res){
+    console.log("Getting chldren");
     con.query(`SELECT name, individualID from children`, function(err, rows, field){
         if (err){
             console.log(err);
@@ -47,7 +49,10 @@ app.post('/attendance', function(req,res){
             console.log(err);
             console.log("error inserting into database");
         }else{
-            console.log("added attendance")
+            console.log("added attendance");
+            // res.send("Successfully added attendance");
+            res.json({'Status': 'success'});
+            res.end();
         }
     })
 })
@@ -60,7 +65,9 @@ app.post('/insertChild', function(req,res){
             console.log(err);
             console.log("error inserting into database");
         }else{
-            console.log("added child")
+            console.log("added child");
+            // res.send("Successfully inserted child");
+            res.end();
         }
     })
 })
