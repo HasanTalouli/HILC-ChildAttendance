@@ -168,7 +168,7 @@ app.get('/getXML', function(req, res){
                 }
                 res.download(`${__dirname}/newFile.xml`);
                 console.log('File successfuly created!');
-                res.end();
+                //res.end();
                 });
 
                 
