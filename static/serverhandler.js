@@ -84,7 +84,7 @@ const ajax = (uri, method, data) => {
             // alert(xhr);
             console.log(xhr);
             //var json = JSON.parse(xhr.responseText);
-            alert("Error: " + xhr);
+            //alert("Error: " + xhr);
         }
     };
     return $.ajax(request);
@@ -213,7 +213,7 @@ const sendChildInfo = () => {
         else {
             ajax(url, 'POST', body).done(function(data) {
                 console.log(data);
-                $("#insertStatus").html(data.Status);
+                $("#insertStatus").html(data.response);
             });
         }
     });

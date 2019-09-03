@@ -62,15 +62,15 @@ app.post('/attendance', function(req,res){
 })
 
 app.post('/insertChild', function(req,res){
-    con.query(`INSERT INTO child (individualID, caseID, name)
+    con.query(`INSERT INTO children (individualID, caseID, name)
     VALUES
-    (${con.escape(req.body.individualID)}, ${con.escape(req.body.caseID)}, ${con.escape(req.body.name)}`, function(err,rows, field){
+    (${con.escape(req.body.individualID)}, ${con.escape(req.body.caseID)}, ${con.escape(req.body.name)})`, function(err,rows, field){
         if (err){
             console.log(err);
             console.log("error inserting into database");
         }else{
             console.log("added child");
-            // res.send("Successfully inserted child");
+            res.json({ response: "Successfully inserted child" });
             res.end();
         }
     })
