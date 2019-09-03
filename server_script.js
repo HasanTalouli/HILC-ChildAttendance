@@ -167,7 +167,7 @@ app.get('/getXML', function(req, res){
                     res.send("Error: " + err);
                 }
                 console.log('File successfuly created!');
-
+                res.download(__dirname + "/newFile.xml", "newFile.xml");
                 });
 
                 
@@ -178,9 +178,9 @@ app.get('/getXML', function(req, res){
                 // console.log(filePath);
                 // res.download(filePath, file);
                 // res.setHeader('Content-disposition', 'attachment; filename=newFile.xml');
-                res.contentType('Content-Type', 'text/xml');
+                // res.contentType('Content-Type', 'text/xml');
                 // res.download(__dirname + "/newFile.xml", "newFile.xml");
-                res.sendFile(path.join(__dirname, "/newFile.xml"));
+                // res.sendFile(path.join(__dirname, "/newFile.xml"));
                 res.end();
                 // res.write(file, 'utf8');
     }// End of else

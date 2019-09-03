@@ -55,6 +55,11 @@
           <CAREUNIT>FT</CAREUNIT>
           <DAYORSLEEP>d</DAYORSLEEP>
         </DATE>
+        <DATE>
+          <DATEOFCARE>8/30/2019</DATEOFCARE>
+          <CAREUNIT>FT</CAREUNIT>
+          <DAYORSLEEP>d</DAYORSLEEP>
+        </DATE>
       </ATTDATES>
     </CHILDATTNDC>
     <CHILDATTNDC>
