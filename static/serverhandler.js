@@ -84,7 +84,7 @@ const ajax = (uri, method, data) => {
             // alert(xhr);
             console.log(xhr);
             //var json = JSON.parse(xhr.responseText);
-            alert("Error: " + xhr);
+            //alert("Error: " + xhr);
         }
     };
     return $.ajax(request);
@@ -176,4 +176,45 @@ const resetForm = () => {
     document.getElementById("timeOut").value = null;
     document.getElementById("attendance").value = null;
     document.getElementById("dayNight").value = null;
+}
+
+const getChildInfo = (callback) => {
+    var body = { 
+        name: document.getElementById("name").value,
+        individualID: document.getElementById("individualID").value,
+        caseID: document.getElementById("caseID").value
+    };
+
+    var error;
+
+    for (var value in body) {
+        if (!body[value]) {
+            if (!error) {
+                error = [];
+            }
+            error.push(value);
+        }
+    }
+
+    return callback(error, body);
+}
+
+const sendChildInfo = () => {
+    var url = "/insertChild";
+
+    getChildInfo(function(err, body) {
+        if (err) {
+            var error = "Please provide info for ";
+            for (var value of err) {
+                error += value + ", ";
+            }
+            $("#insertStatus").html("Error: " + error);
+        }
+        else {
+            ajax(url, 'POST', body).done(function(data) {
+                console.log(data);
+                $("#insertStatus").html(data.response);
+            });
+        }
+    });
 }

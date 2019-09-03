@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>Attendance</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Setting up for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- jQuery mobile -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="index.html">HILC</a>
+    <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Links (if needed)
+        </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Link 1</a>
+            <a class="dropdown-item" href="#">Link 2</a>
+            <a class="dropdown-item" href="#">Link 3</a>
+        </div>
+        </li>
+    </ul>
+</nav>
+<body>
+    
+    <label>Input The Student's Name:</label>
+    <input id="name" type="text">
+
+    <label>Input The Student's Individual ID:</label>
+    <input id="individualID" type="text">
+
+    <label>Input The Student's Case ID:</label>
+    <input id="caseID" type="text">
+
+    <button id="submitChildInfo" onclick="sendChildInfo()">Submit</button>
+
+    <!-- Tells the user of their insert attempt -->
+    <div id="insertStatus"></div>
+
+    <div id="downloadResult"></div>
+    <script src="serverhandler.js"></script>
+</body>
+</html>
