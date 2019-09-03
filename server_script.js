@@ -80,9 +80,13 @@ app.get('/getXML', function(req, res){
     var jsonXml = {HELLO: 'meh'};
 
     // This value will be gotten from the user
-    var selectedDate = new Date(2019, 8, 29, 1);
-    // TODO: replace hardcoded month and year to reflect user input
-    var request = "SELECT * FROM CS275Daycare.attendance JOIN children ON attendance.individualID = children.individualID WHERE YEAR(dateOfCare) = 2019 AND MONTH(dateOfCare) = 8;";
+    // var selectedDate = new Date(2019, 8, 29, 1);
+
+    var month = req.query.month;
+    var year = req.query.year;
+
+    var request = `SELECT * FROM CS275Daycare.attendance JOIN children ON attendance.individualID = children.individualID WHERE YEAR(dateOfCare) = ${year} AND MONTH(dateOfCare) = ${month};`;
+    console.log(`request: ${request}`)
     con.query(request, function(err, rows, fields) {
         if (err) {
             console.log("Error getting requested elements: " + err.message);
@@ -150,9 +154,10 @@ app.get('/getXML', function(req, res){
 
                 jsonXml = {
                     ATTNDCUPLD: {
-                        '@xmlns:xsi': '"http://www.w3.org/2001/XMLSchema-instance"',
+                        '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
                         PROVIDER: {
-                            '@ID': '311214083 SLID="4"',
+                            '@ID': '311214083',
+                            '@SLID': "4",
                                 CHILDATTNDC
                             }
                         }
@@ -168,21 +173,8 @@ app.get('/getXML', function(req, res){
                 }
                 res.download(`${__dirname}/newFile.xml`);
                 console.log('File successfuly created!');
-                //res.end();
                 });
 
-                
-
-                // var fileName = "newFile.xml";
-                // var filePath = path.join('.', fileName);
-                // var file = fs.readFile(filePath, 'utf8');
-                // console.log(filePath);
-                // res.download(filePath, file);
-                // res.setHeader('Content-disposition', 'attachment; filename=newFile.xml');
-                // res.contentType('Content-Type', 'text/xml');
-                // res.download(__dirname + "/newFile.xml", "newFile.xml");
-                //res.sendFile(path.join(__dirname, "/newFile.xml"));
-                
                 // res.write(file, 'utf8');
     }// End of else
     });// End of connect
