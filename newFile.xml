@@ -6,7 +6,17 @@
       <INDIVIDUALID>'123456789'</INDIVIDUALID>
       <ATTDATES>
         <DATE>
-          <DATEOFCARE>9/3/2019</DATEOFCARE>
+          <DATEOFCARE>7/14/2019</DATEOFCARE>
+          <CAREUNIT>FT</CAREUNIT>
+          <DAYORSLEEP>d</DAYORSLEEP>
+        </DATE>
+        <DATE>
+          <DATEOFCARE>7/9/2019</DATEOFCARE>
+          <CAREUNIT>FT</CAREUNIT>
+          <DAYORSLEEP>d</DAYORSLEEP>
+        </DATE>
+        <DATE>
+          <DATEOFCARE>7/27/2019</DATEOFCARE>
           <CAREUNIT>FT</CAREUNIT>
           <DAYORSLEEP>d</DAYORSLEEP>
         </DATE>
