@@ -12,24 +12,25 @@ $("#loadXmlButton").click(function () {
     }
 
     var date = new Date(year, month, 1);
-    $.ajax({
-        type: "GET",
-        url : "/getXML",
-        data: {selectedDate: date},
-        // dataType : "file",
+    window.open(`/getXML?selectedDate=${date}`);
+    // $.ajax({
+    //     type: "GET",
+    //     url : "/getXML",
+    //     data: {selectedDate: date},
+    //     // dataType : "file",
 
-        success : function(msg){
-            // Changes HTML to have the result
-            $("#downloadResult").html("Thank you, your download will now start: " + msg);
-            console.log(msg);
-        },
+    //     success : function(msg){
+    //         // Changes HTML to have the result
+    //         $("#downloadResult").html("Thank you, your download will now start: " + msg);
+    //         console.log(msg);
+    //     },
 
-        // This error will only ever be reached if the user somehow disconnects
-        error: function(jgXHR, textStatus,errorThrown){
-            alert("Something weird just went wrong, please try refreshing the page\n(connection lost with server)");
-            $("#downloadResult").html("Something weird just went wrong, please try refreshing the page\n(connection lost with server)");
-        }
-    });
+    //     // This error will only ever be reached if the user somehow disconnects
+    //     error: function(jgXHR, textStatus,errorThrown){
+    //         alert("Something weird just went wrong, please try refreshing the page\n(connection lost with server)");
+    //         $("#downloadResult").html("Something weird just went wrong, please try refreshing the page\n(connection lost with server)");
+    //     }
+    // });
 });
 
 function loadYears() {
