@@ -85,7 +85,7 @@ app.get('/getXML', function(req, res){
     var month = req.query.month;
     var year = req.query.year;
 
-    var request = `SELECT * FROM CS275Daycare.attendance JOIN children ON attendance.individualID = children.individualID WHERE YEAR(dateOfCare) = ${year} AND MONTH(dateOfCare) = ${month};`;
+    var request = `SELECT * FROM CS275Daycare.attendance JOIN children ON attendance.individualID = children.individualID WHERE YEAR(dateOfCare) = ${con.escape(year)} AND MONTH(dateOfCare) = ${con.escape(month)};`;
     console.log(`request: ${request}`)
     con.query(request, function(err, rows, fields) {
         if (err) {
