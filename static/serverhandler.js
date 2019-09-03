@@ -33,6 +33,22 @@ $("#loadXmlButton").click(function () {
     // });
 });
 
+function downloadXML() {
+    console.log("thing: " + $("#monthSelecter").val());
+    var month = $("#monthSelecter").val();
+    var year = $("#yearSelecter").val();
+    
+    if (month === "" || year === "") {
+        console.log("Value of selected year: " + year);
+        console.log("Value of selected month: " + month);
+        $("#downloadResult").html("Please select a year and a month!");
+        return;
+    }
+
+    var date = new Date(year, month, 1);
+    window.open(`/getXML?month=${month}&year=${year}`);
+}
+
 function loadYears() {
     console.log("LOADING YEARS");
     var selectMenu = $("#yearSelecter");
@@ -51,6 +67,7 @@ function loadYears() {
         // }
         selectMenu.append(option);
     }
+    console.log("Years have been loaded");
 }
 
 //base ajax function
