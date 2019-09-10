@@ -42,7 +42,6 @@ app.post('/attendance', function(req,res){
             console.log("error inserting into database");
         }else{
             console.log("added attendance");
-            // res.send("Successfully added attendance");
             res.json({'Status': 'success'});
             res.end();
         }
