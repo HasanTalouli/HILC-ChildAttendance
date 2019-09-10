@@ -3,12 +3,9 @@ var fs = require('fs');
 var builder = require('xmlbuilder');
 
 var mysql = require('mysql');
-var con = mysql.createConnection({
-	host: 'hilcdaycare.com',
-	user: 'HasanTalouli',
-	password: 'hasantalouli',
-	database: 'CS275Daycare'
-});
+var config = fs.readFileSync('./config.json');
+
+var con = mysql.createConnection(JSON.parse(config));
 
 // Connecting to database
 con.connect(function(err) {
